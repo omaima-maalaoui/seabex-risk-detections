@@ -1,1 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Seabex Risk Detection</title></head>
+<body>
+<h1>Seabex - Agricultural Risk Detection</h1>
+<table border="1" id="results"><tr><th>Moisture</th><th>Temperature</th><th>Rainfall</th><th>Risk</th></tr></table>
+<script>
+let m=[15,45,20,60,10],t=[38,25,35,22,40],r=[0,12,2,20,0];
+m.forEach((v,i)=>{let risk=v<20&&t[i]>30?"High Risk":v<25?"Medium Risk":"Low Risk";document.getElementById("results").innerHTML+=`<tr><td>${v}</td><td>${t[i]}</td><td>${r[i]}</td><td>${risk}</td></tr>`});
+</script>
+</body></html>
 
