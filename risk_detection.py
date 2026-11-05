@@ -9,7 +9,7 @@ data = {
 df = pd.DataFrame(data)
 
 def detect_risk(row):
-    if row["soil_moisture"] < 20 and row["temperature"]R > 30:
+    if row["soil_moisture"] < 20 and row["temperature"] > 30:
         return "High Risk"
     elif row["soil_moisture"] < 25:
         return "Medium Risk"
