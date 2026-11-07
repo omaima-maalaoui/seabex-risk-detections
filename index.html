@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Seabex Risk Detection</title><style>body{font-family:Arial;background:#eef4f1;padding:25px}.box{max-width:500px;margin:30px auto;background:white;padding:25px;border-radius:15px}input,button{width:100%;padding:12px;margin:10px 0;box-sizing:border-box}button{background:#176b45;color:white;border:0}#result{padding:15px;border-radius:8px;margin-top:15px}</style></head>
+<html><head><title>Seabex Risk Detection</title><style>body{font-family:Arial;background:#eef4f1;padding:25px}.box{max-width:500px;margin:auto;background:white;padding:25px;border-radius:15px}input,button{width:100%;padding:12px;margin:10px 0;box-sizing:border-box}button{background:#176b45;color:white;border:0}#result{padding:15px;margin-top:15px}</style></head>
 <body><div class="box"><h1>🌱 Seabex Risk Detection</h1><p>Agricultural Risk Monitoring</p>
-<label>Soil Moisture (%)</label><input id="m" type="number" value="15"><label>Temperature (°C)</label><input id="t" type="number" value="38"><label>Rainfall (mm)</label><input id="r" type="number" value="0">
+<label>Soil Moisture (%)</label><input id="m" type="number" value="15">
+<label>Temperature (°C)</label><input id="t" type="number" value="38">
+<label>Rainfall (mm)</label><input id="r" type="number" value="0">
 <button onclick="analyze()">Analyze Risk</button><div id="result"></div></div>
 <script>
-function analyze(){let m=+document.getElementById('m').value,t=+document.getElementById('t').value,r=+document.getElementById('r').value,o=document.getElementById('result');if(!document.getElementById('m').value||!document.getElementById('t').value||!document.getElementById('r').value||m<0||m>100||r<0){o.innerHTML="Please enter valid values";return;}let risk=m<20&&t>30?"HIGH RISK":m<25?"MEDIUM RISK":"LOW RISK";o.innerHTML=`<h2>${risk}</h2>Rainfall: ${r} mm`;o.style.background=risk==="HIGH RISK"?"#ffe0e0":risk==="MEDIUM RISK"?"#fff0d5":"#d9f5e5";}
+function analyze(){let m=+document.getElementById('m').value,t=+document.getElementById('t').value,r=+document.getElementById('r').value,o=document.getElementById('result');if(!document.getElementById('m').value||!document.getElementById('t').value||!document.getElementById('r').value||m<0||m>100||t< -10||t>60||r<0){o.innerHTML="Enter valid values";return;}let s=Math.min(100,Math.round(Math.max(0,(25-m)*3)+Math.max(0,t-25)*2+Math.max(0,20-r)*1.5)),risk=s>=60?"HIGH RISK":s>=30?"MEDIUM RISK":"LOW RISK";o.innerHTML=`<h2>${risk}</h2><h1>${s}% Risk</h1>`;o.style.background=s>=60?"#ffe0e0":s>=30?"#fff0d5":"#d9f5e5";}
 </script></body></html>
