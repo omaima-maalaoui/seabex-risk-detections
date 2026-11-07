@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html><head><title>Seabex Risk Detection</title><style>body{font-family:Arial;background:#eef4f1;padding:25px}label,input{display:block;width:100%;margin:10px 0;padding:10px;box-sizing:border-box}button{width:100%;padding:12px;background:#176b45;color:white;border:0}</style></head>
-<body><h1>🌱 Seabex Risk Detection</h1><p>Agricultural Risk Monitoring</p>
+<html><head><title>Seabex Risk Detection</title><style>
+body{font-family:Arial;background:#eef4f1;min-height:100vh;display:flex;justify-content:center;align-items:center;margin:0}
+.box{width:90%;max-width:450px;background:white;padding:25px;border-radius:15px;box-sizing:border-box}
+label,input,button{display:block;width:100%;margin:10px 0;padding:12px;box-sizing:border-box}
+button{background:#176b45;color:white;border:0;cursor:pointer}
+#result{text-align:center;margin-top:15px;padding:10px;border-radius:8px}
+</style></head>
+<body><div class="box"><h1>🌱 Seabex Risk Detection</h1><p>Agricultural Risk Monitoring</p>
 <label>Soil Moisture (%)</label><input id="m" type="number" value="15">
 <label>Temperature (°C)</label><input id="t" type="number" value="38">
 <label>Rainfall (mm)</label><input id="r" type="number" value="17">
-<button onclick="let m=+document.getElementById('m').value,t=+document.getElementById('t').value,r=+document.getElementById('r').value,s=Math.min(100,Math.round(Math.max(0,(25-m)*3)+Math.max(0,t-25)*2+Math.max(0,20-r)*1.5)),risk=s>=60?'HIGH RISK':s>=30?'MEDIUM RISK':'LOW RISK';document.getElementById('result').innerHTML='<h2>'+risk+'</h2><h1>'+s+'% Risk</h1>'">Analyze Risk</button>
-<div id="result"></div></body></html>
+<button onclick="let m=+document.getElementById('m').value,t=+document.getElementById('t').value,r=+document.getElementById('r').value,s=Math.min(100,Math.round(Math.max(0,(25-m)*3)+Math.max(0,t-25)*2+Math.max(0,20-r)*1.5)),risk=s>=60?'HIGH RISK':s>=30?'MEDIUM RISK':'LOW RISK';let o=document.getElementById('result');o.innerHTML='<h2>'+risk+'</h2><h1>'+s+'% Risk</h1>';o.style.background=s>=60?'#ffe0e0':s>=30?'#fff0d5':'#d9f5e5'">Analyze Risk</button>
+<div id="result"></div></div></body></html>
